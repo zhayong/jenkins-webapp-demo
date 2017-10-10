@@ -6,10 +6,15 @@ describe('myApp.view1 module', function() {
 
   describe('view1 controller', function(){
 
-    it('should ....', inject(function($controller) {
+    it('should ....', inject(function($controller,$rootScope) {
       //spec body
-      var view1Ctrl = $controller('View1Ctrl');
-      expect(view1Ctrl).toBeDefined();
+      var $scope = $rootScope.$new(),
+          ctrl = $controller('View1Ctrl', {
+            $scope: $scope
+          });
+
+      expect(ctrl).toBeDefined();
+      expect($scope.name).toBe('hello world');
     }));
 
   });
